@@ -8,23 +8,25 @@ namespace CustomCASSIE
         public override string Name => "Custom CASSIE";
         public override string Prefix => "CustomCASSIE";
         public override string Author => "VALERA771#1471";
-        public override Version Version => new Version(1, 0, 0);
+        public override Version Version => new Version(1, 1, 0);
         public override Version RequiredExiledVersion => new Version(5, 3, 0);
 
-        private MapH map;
+        private Handlers han;
 
         public override void OnEnabled()
         {
-            map = new MapH();
-            Exiled.Events.Handlers.Map.Decontaminating += map.OnDecont;
+            han = new Handlers();
+            Exiled.Events.Handlers.Map.Decontaminating += han.OnDecont;
+            Exiled.Events.Handlers.Server.RoundStarted += han.OnRnStart;
             Plugin.singleton = this;
             base.OnEnabled();
         }
 
         public override void OnDisabled()
         {
-            map = null;
-            Exiled.Events.Handlers.Map.Decontaminating -= map.OnDecont;
+            han = null;
+            Exiled.Events.Handlers.Map.Decontaminating -= han.OnDecont;
+            Exiled.Events.Handlers.Server.RoundStarted -= han.OnRnStart;
 
             Plugin.singleton = null;
             base.OnDisabled();
