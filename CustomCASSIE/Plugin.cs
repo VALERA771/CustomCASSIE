@@ -12,11 +12,13 @@ namespace CustomCASSIE
         public override Version RequiredExiledVersion => new Version(5, 3, 0);
 
         private Handlers han;
+        public static int ActGen;
 
         public override void OnEnabled()
         {
             han = new Handlers();
             Exiled.Events.Handlers.Map.Decontaminating += han.OnDecont;
+            Exiled.Events.Handlers.Map.GeneratorActivated += han.OnGenAct;
             Exiled.Events.Handlers.Server.RoundStarted += han.OnRnStart;
             Plugin.singleton = this;
             base.OnEnabled();
@@ -26,10 +28,16 @@ namespace CustomCASSIE
         {
             han = null;
             Exiled.Events.Handlers.Map.Decontaminating -= han.OnDecont;
+            Exiled.Events.Handlers.Map.GeneratorActivated -= han.OnGenAct;
             Exiled.Events.Handlers.Server.RoundStarted -= han.OnRnStart;
 
             Plugin.singleton = null;
             base.OnDisabled();
+        }
+
+        public override void OnReloaded()
+        {
+            base.OnReloaded();
         }
 
 

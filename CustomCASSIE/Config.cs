@@ -8,6 +8,9 @@ namespace CustomCASSIE
         [Description("Is plugin enabled?")]
         public bool IsEnabled { get; set; } = true;
 
+        [Description("Is debug mode enabled?")]
+        public bool Debug { get; set; } = false;
+
         [Description("Text for cassie after LCZ Decontamination")]
         public string MessageLCZ { get; set; } = "";
 
@@ -25,5 +28,14 @@ namespace CustomCASSIE
 
         [Description("Time between round start and cassie")]
         public int WaitTimeRn { get; set; } = 0;
+
+        [Description("Text for cassie after all generator activated")]
+        public string MessageGen { get; set; } = "";
+
+        [Description("Should cassie after all gen activated have subtiteles?")]
+        public bool IsSubtiteledGen { get; set; } = true;
+
+        [Description("Duration between last gen activated and cassie")]
+        public int WaitTimeGen { get; set; } = 10;
     }
 }
