@@ -37,5 +37,8 @@ namespace CustomCASSIE
 
         [Description("Duration between last gen activated and cassie")]
         public int WaitTimeGen { get; set; } = 10;
+
+        [Description("Ebable chack for MapEditorReborn installatio?")]
+        public bool CheckMerInstalled { get; set; } = true;
     }
 }
